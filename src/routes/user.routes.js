@@ -1,9 +1,10 @@
 const { Router } = require('express');
+const UserController = require("../controllers/UserController");
+
+const userController = new UserController();
 
 const userRoutes = Router();
 
-userRoutes.get("/", (request, response) => {
-    response.send("ola, mundo! Esse é o CashGuard.");
-});
+userRoutes.post("/", userController.create);
 
 module.exports = userRoutes;
