@@ -6,6 +6,7 @@ const transactionsController = new TransactionsController();
 
 const transactionsRoutes = Router();
 
-transactionsRoutes.post('/expenses', ensureAuthenticated, transactionsController.create);
+transactionsRoutes.post('/', ensureAuthenticated, transactionsController.create);
+transactionsRoutes.get('/', ensureAuthenticated, transactionsController.index);
 
 module.exports = transactionsRoutes;
