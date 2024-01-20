@@ -15,13 +15,13 @@ class TransactionsController {
     }
 
     async index(request, response) {
-        // const { title } = request.query;
+        const { title } = request.query;
         const user_id = request.user.id;
 
         const transactionsRepository = new TransactionsRepository();
         const transactionsService = new TransactionsService(transactionsRepository);
 
-        const transactions = await transactionsService.executeGetTransactions({ user_id });
+        const transactions = await transactionsService.executeGetTransactions({ user_id, title });
 
         response.status(200).json(transactions);
     }
