@@ -12,6 +12,7 @@ const transactionsRoutes = Router();
 
 transactionsRoutes.post('/', ensureAuthenticated, transactionsController.create);
 transactionsRoutes.get('/', ensureAuthenticated, transactionsController.index);
+transactionsRoutes.put('/', ensureAuthenticated, transactionsController.update);
 transactionsRoutes.get('/expenses', ensureAuthenticated, expensesController.index);
 transactionsRoutes.get('/incomes', ensureAuthenticated, incomesController.index);
 

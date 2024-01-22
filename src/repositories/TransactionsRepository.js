@@ -66,6 +66,17 @@ class TransactionsRepository {
 
         return transactions;
     }
+
+    async updateTransaction({ transaction_id, type, title, description, value, category, status }) {
+        await knex(type).update({
+            title,
+            description,
+            value,
+            category,
+            status,
+            updated_at: knex.fn.now()
+        }).where("id", transaction_id);
+    }
 }
 
 module.exports = TransactionsRepository;

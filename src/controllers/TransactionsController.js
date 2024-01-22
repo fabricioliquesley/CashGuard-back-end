@@ -25,6 +25,25 @@ class TransactionsController {
 
         response.status(200).json(transactions);
     }
+
+    async update(request, response) {
+        const { transaction_id, type, title, description, value, category, status, } = request.body;
+
+        const transactionsRepository = new TransactionsRepository();
+        const transactionsService = new TransactionsService(transactionsRepository);
+
+        await transactionsService.executeUpdateTransaction({
+            transaction_id, 
+            type, 
+            title, 
+            description, 
+            value, 
+            category, 
+            status
+        })
+
+        response.status(201).json();
+    }
 }
 
 module.exports = TransactionsController;

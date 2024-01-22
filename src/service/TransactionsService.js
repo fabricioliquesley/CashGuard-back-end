@@ -12,6 +12,18 @@ class TransactionsService {
     async executeGetTransactions({ user_id, title }) {
         return await this.transactionsRepository.getTransactions({ user_id, title });
     }
+
+    async executeUpdateTransaction({ transaction_id, type, title, description, value, category, status }){
+        return await this.transactionsRepository.updateTransaction({ 
+            transaction_id, 
+            type, 
+            title, 
+            description, 
+            value, 
+            category, 
+            status, 
+        });
+    }
 }
 
 module.exports = TransactionsService;
