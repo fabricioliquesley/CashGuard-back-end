@@ -1,11 +1,13 @@
 const knex = require("../database/knex");
 
 class TransactionsRepository {
-    async insertTransaction({ type, title, description, value, category, status, user_id }) {
+    async insertTransaction({ type, title, description, value, date, category, status, user_id }) {
         await knex(type).insert({
+            type,
             title,
             description,
             value,
+            date,
             category,
             status,
             user_id
@@ -67,14 +69,15 @@ class TransactionsRepository {
         return transactions;
     }
 
-    async updateTransaction({ transaction_id, type, title, description, value, category, status }) {
+    async updateTransaction({ transaction_id, type, title, description, value, date, category, status }) {
         await knex(type).update({
+            type,
             title,
             description,
             value,
+            date,
             category,
-            status,
-            updated_at: knex.fn.now()
+            status
         }).where("id", transaction_id);
     }
 }
