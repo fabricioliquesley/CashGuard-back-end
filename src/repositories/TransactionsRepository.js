@@ -20,6 +20,7 @@ class TransactionsRepository {
         if (title) {
             transactions = await knex("incomes")
                 .select([
+                    "incomes.id",
                     "incomes.title",
                     "incomes.description",
                     "incomes.value",
@@ -30,6 +31,7 @@ class TransactionsRepository {
                 .whereLike("incomes.title", `%${title}%`)
                 .union(function () {
                     this.select([
+                        "incomes.id",
                         "expenses.title",
                         "expenses.description",
                         "expenses.value",
@@ -45,6 +47,7 @@ class TransactionsRepository {
         } else {
             transactions = await knex("incomes")
                 .select([
+                    "incomes.id",
                     "incomes.title",
                     "incomes.description",
                     "incomes.value",
@@ -53,6 +56,7 @@ class TransactionsRepository {
                 ])
                 .union(function () {
                     this.select([
+                        "incomes.id",
                         "expenses.title",
                         "expenses.description",
                         "expenses.value",
