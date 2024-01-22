@@ -7,6 +7,14 @@ class UserRepository {
         return user;
     }
 
+    async createUser({name, email, password}){
+        await knex("users").insert({
+            name,
+            email,
+            password
+        })
+    }
+
     async checkEmail({ email }) {
         const user = await knex("users").where("email", email).first();
 

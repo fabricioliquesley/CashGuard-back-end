@@ -6,6 +6,22 @@ class UserService {
         this.userRepository = repository;
     }
 
+    async executeCreateUser({ name, email, password }) {
+        if (name == "" || email == "" || password == "") {
+            throw new AppError("Preencha todos os campos para cadastrar");
+        }
+
+        const userExists = await this.userRepository.checkEmail({ email });
+
+        if (userExists) {
+            throw new AppError("Email já em uso!");
+        }
+
+        const hashedPassword = await hash(password, 8)
+
+        return await this.userRepository.createUser({ name, email, password: hashedPassword });
+    }
+
     async executeUpdateUser({ user_id, name, email, old_password, password }) {
         const user = await this.userRepository.getUser({ user_id });
 
