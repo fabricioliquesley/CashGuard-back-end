@@ -12,6 +12,10 @@ class ExpensesController {
 
         response.status(201).json(expenses);
     }
+
+    async delete(){
+
+    }
 }
 
 module.exports = ExpensesController;

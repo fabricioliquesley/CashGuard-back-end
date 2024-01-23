@@ -13,7 +13,9 @@ const transactionsRoutes = Router();
 transactionsRoutes.post('/', ensureAuthenticated, transactionsController.create);
 transactionsRoutes.get('/', ensureAuthenticated, transactionsController.index);
 transactionsRoutes.put('/', ensureAuthenticated, transactionsController.update);
-transactionsRoutes.get('/expenses', ensureAuthenticated, expensesController.index);
 transactionsRoutes.get('/incomes', ensureAuthenticated, incomesController.index);
+transactionsRoutes.delete('/incomes/:id', ensureAuthenticated, incomesController.delete);
+transactionsRoutes.get('/expenses', ensureAuthenticated, expensesController.index);
+transactionsRoutes.delete('/expenses/:id', ensureAuthenticated, expensesController.delete);
 
 module.exports = transactionsRoutes;
