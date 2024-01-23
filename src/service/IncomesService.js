@@ -11,6 +11,18 @@ class IncomesService {
         return incomes;
     }
 
+    async executeShowDetail({ user_id, transaction_id }){
+        const income = await this.incomesRepository.getIncomes({ transaction_id });
+
+        if (!income) {
+            throw new AppError("Transação não encontrada");
+        } else if (user_id !== income.id) {
+            throw new AppError("Essa transação não pertence a esse usuário");
+        }
+
+        return income;
+    }
+
     async executeDelete({ user_id, transaction_id }) {
         const income = await this.incomesRepository.getIncomes({ transaction_id });
 
