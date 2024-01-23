@@ -13,6 +13,18 @@ class ExpensesController {
         response.status(201).json(expenses);
     }
 
+    async show(request, response){
+        const user_id = request.user.id;
+        const {id: transaction_id} = request.params;
+
+        const expensesRepository = new ExpensesRepository();
+        const expensesService = new ExpensesService(expensesRepository);
+
+        const expense = await expensesService.executeShowDetail({ user_id, transaction_id });
+        
+        response.status(201).json(expense);
+    }
+
     async delete(request, response){
         const user_id = request.user.id;
         const {id: transaction_id} = request.params;

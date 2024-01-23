@@ -16,7 +16,7 @@ class IncomesService {
 
         if (!income) {
             throw new AppError("Transação não encontrada");
-        } else if (user_id !== income.id) {
+        } else if (user_id !== income.user_id) {
             throw new AppError("Essa transação não pertence a esse usuário");
         }
 
@@ -28,7 +28,7 @@ class IncomesService {
 
         if (!income) {
             throw new AppError("Transação não encontrada");
-        } else if (user_id !== income.id) {
+        } else if (user_id !== income.user_id) {
             throw new AppError("Essa transação não pertence a esse usuário");
         }
 
