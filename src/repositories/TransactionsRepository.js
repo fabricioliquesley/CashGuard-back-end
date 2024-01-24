@@ -31,7 +31,7 @@ class TransactionsRepository {
                 .whereLike("incomes.title", `%${title}%`)
                 .union(function () {
                     this.select([
-                        "incomes.id",
+                        "expenses.id",
                         "expenses.title",
                         "expenses.description",
                         "expenses.value",
@@ -56,7 +56,7 @@ class TransactionsRepository {
                 ])
                 .union(function () {
                     this.select([
-                        "incomes.id",
+                        "expenses.id",
                         "expenses.title",
                         "expenses.description",
                         "expenses.value",
