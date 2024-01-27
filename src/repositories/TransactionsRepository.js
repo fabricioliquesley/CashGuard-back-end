@@ -21,6 +21,7 @@ class TransactionsRepository {
             transactions = await knex("incomes")
                 .select([
                     "incomes.id",
+                    "incomes.type",
                     "incomes.title",
                     "incomes.description",
                     "incomes.value",
@@ -33,6 +34,7 @@ class TransactionsRepository {
                 .union(function () {
                     this.select([
                         "expenses.id",
+                        "expenses.type",
                         "expenses.title",
                         "expenses.description",
                         "expenses.value",
@@ -49,7 +51,8 @@ class TransactionsRepository {
         } else {
             transactions = await knex("incomes")
                 .select([
-                    "incomes.id",
+                    "incomes.id", 
+                    "incomes.type", 
                     "incomes.title",
                     "incomes.description",
                     "incomes.value",
@@ -60,6 +63,7 @@ class TransactionsRepository {
                 .union(function () {
                     this.select([
                         "expenses.id",
+                        "expenses.type",
                         "expenses.title",
                         "expenses.description",
                         "expenses.value",
