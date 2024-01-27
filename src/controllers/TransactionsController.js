@@ -35,6 +35,17 @@ class TransactionsController {
         response.status(200).json(transactions);
     }
 
+    async show(request, response) {
+        const user_id = request.user.id;
+
+        const transactionsRepository = new TransactionsRepository();
+        const transactionsService = new TransactionsService(transactionsRepository);
+
+        const recentTransactions = await transactionsService.executeGetRecentTransactions({user_id});
+
+        response.status(200).json(recentTransactions);
+    }
+
     async update(request, response) {
         const { transaction_id, type, title, description, value, date, category, status, } = request.body;
 

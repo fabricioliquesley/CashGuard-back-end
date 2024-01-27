@@ -24,6 +24,7 @@ class TransactionsRepository {
                     "incomes.title",
                     "incomes.description",
                     "incomes.value",
+                    "incomes.date",
                     "incomes.category",
                     "incomes.status",
                 ])
@@ -35,6 +36,7 @@ class TransactionsRepository {
                         "expenses.title",
                         "expenses.description",
                         "expenses.value",
+                        "expenses.date",
                         "expenses.category",
                         "expenses.status",
                     ]).from("expenses")
@@ -51,6 +53,7 @@ class TransactionsRepository {
                     "incomes.title",
                     "incomes.description",
                     "incomes.value",
+                    "incomes.date",
                     "incomes.category",
                     "incomes.status",
                 ])
@@ -60,6 +63,7 @@ class TransactionsRepository {
                         "expenses.title",
                         "expenses.description",
                         "expenses.value",
+                        "expenses.date",
                         "expenses.category",
                         "expenses.status",
                     ]).from("expenses")
