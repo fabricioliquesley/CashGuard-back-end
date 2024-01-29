@@ -38,8 +38,6 @@ class TransactionsController {
     async show(request, response) {
         const user_id = request.user.id;
 
-        console.log(user_id)
-
         const transactionsRepository = new TransactionsRepository();
         const transactionsService = new TransactionsService(transactionsRepository);
 

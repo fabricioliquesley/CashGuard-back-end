@@ -30,7 +30,6 @@ class TransactionsService {
         const [todayDate,] = today.toISOString().split("T");
         const [sevenDaysAgoDate] = sevenDaysAgo.toISOString().split("T");
 
-        console.log(user_id)
         const transactions = await this.transactionsRepository.getTransactions({ user_id });
 
         function checkIfDateIsBetween(data, start, end) {
