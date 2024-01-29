@@ -16,6 +16,7 @@ class TransactionsRepository {
 
     async getTransactions({ user_id, title }) {
         let transactions;
+        console.log(user_id);
 
         if (title) {
             transactions = await knex("incomes")
@@ -60,6 +61,7 @@ class TransactionsRepository {
                     "incomes.category",
                     "incomes.status",
                 ])
+                .where("incomes.user_id", user_id)
                 .union(function () {
                     this.select([
                         "expenses.id",
