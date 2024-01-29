@@ -5,8 +5,8 @@ class IncomesService {
         this.incomesRepository = repository;
     }
 
-    async execute({ user_id }) {
-        const incomes = await this.incomesRepository.getIncomes({ user_id });
+    async execute({ user_id, title }) {
+        const incomes = await this.incomesRepository.getIncomes({ user_id, title });
 
         return incomes;
     }

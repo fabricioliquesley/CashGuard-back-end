@@ -16,7 +16,6 @@ class TransactionsRepository {
 
     async getTransactions({ user_id, title }) {
         let transactions;
-        console.log(user_id);
 
         if (title) {
             transactions = await knex("incomes")

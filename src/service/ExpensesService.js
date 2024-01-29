@@ -5,13 +5,13 @@ class ExpensesService {
         this.expensesRepository = repository;
     }
 
-    async execute({user_id}){
-        const expenses = await this.expensesRepository.getExpenses({user_id});
+    async execute({ user_id, title }) {
+        const expenses = await this.expensesRepository.getExpenses({ user_id, title });
 
         return expenses;
     }
 
-    async executeShowDetail({ user_id, transaction_id }){
+    async executeShowDetail({ user_id, transaction_id }) {
         const expense = await this.expensesRepository.getExpenses({ transaction_id });
 
         if (!expense) {

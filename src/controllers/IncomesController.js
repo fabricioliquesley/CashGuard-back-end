@@ -4,11 +4,12 @@ const IncomesService = require("../service/IncomesService");
 class IncomesController {
     async index(request, response) {
         const user_id = request.user.id;
+        const { title } = request.query;
 
         const incomesRepository = new IncomesRepository();
         const incomesService = new IncomesService(incomesRepository);
 
-        const incomes = await incomesService.execute({ user_id });
+        const incomes = await incomesService.execute({ user_id, title });
 
         response.status(201).json(incomes);
     }
